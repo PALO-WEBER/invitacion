@@ -8,12 +8,15 @@
     <!-- ETIQUETAS PARA WHATSAPP (OPEN GRAPH) -->
     <meta property="og:title" content="Mis XV - Palo">
     <meta property="og:description" content="¡Te espero para festejar este gran momento de mi vida!">
-    <meta property="og:image" content="paloxv.jpg">
+    <!-- Link completo de la imagen -->
+    <meta property="og:image" content="https://palo-weber.github.io/invitacion/paloxv.jpg">
+    <!-- Medidas exactas proporcionadas (640x320) -->
+    <meta property="og:image:width" content="640">
+    <meta property="og:image:height" content="320">
     <meta property="og:type" content="website">
 
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -95,7 +98,6 @@
 
         header { padding: 40px 20px 15px; }
 
-        /* Ajuste: Palo un poco más grande */
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 7.5rem; 
@@ -159,7 +161,6 @@
             position: relative;
         }
 
-        /* Ajuste: Menos interlineado para el nombre del salón */
         h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.1rem;
@@ -172,7 +173,6 @@
             font-weight: 700;
         }
 
-        /* Ajuste: Dirección en 2 líneas para móviles */
         .address-text span {
             display: block;
             margin-bottom: 2px;
@@ -217,7 +217,6 @@
             filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.7));
         }
 
-        /* Ajuste: Texto IG dividido en 2 líneas */
         .ig-text span {
             display: block;
         }
@@ -316,12 +315,14 @@
         </defs>
     </svg>
 
+    <!-- ESTRELLAS FONDO -->
     <div class="stars-container">
         <div id="stars-micro" class="star-layer"></div>
         <div id="stars-small" class="star-layer"></div>
         <div id="stars-medium" class="star-layer"></div>
     </div>
 
+    <!-- REPRODUCTOR MÚSICA -->
     <div class="music-player">
         <audio id="bg-music" loop><source src="cancion.mp3" type="audio/mpeg"></audio>
         <button class="music-btn" onclick="toggleMusic(event)"><i class="fa-solid fa-music" id="music-icon"></i></button>
@@ -399,9 +400,12 @@
         // Efecto Parallax Estrellas
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            document.getElementById('stars-micro').style.transform = `translateY(${scrolled * -0.2}px)`;
-            document.getElementById('stars-small').style.transform = `translateY(${scrolled * -0.4}px)`;
-            document.getElementById('stars-medium').style.transform = `translateY(${scrolled * -0.6}px)`;
+            const micro = document.getElementById('stars-micro');
+            const small = document.getElementById('stars-small');
+            const medium = document.getElementById('stars-medium');
+            if (micro) micro.style.transform = `translateY(${scrolled * -0.2}px)`;
+            if (small) small.style.transform = `translateY(${scrolled * -0.4}px)`;
+            if (medium) medium.style.transform = `translateY(${scrolled * -0.6}px)`;
         });
 
         // Copiar Alias
@@ -421,11 +425,17 @@
         // Música
         const music = document.getElementById('bg-music');
         const icon = document.getElementById('music-icon');
-        function startMusicOnce() { if(music.paused) music.play().catch(() => {}); }
+        function startMusicOnce() { if(music && music.paused) music.play().catch(() => {}); }
         function toggleMusic(e) {
             e.stopPropagation();
-            if(music.paused) { music.play(); icon.className = "fa-solid fa-music"; }
-            else { music.pause(); icon.className = "fa-solid fa-play"; }
+            if(!music) return;
+            if(music.paused) { 
+                music.play(); 
+                if(icon) icon.className = "fa-solid fa-music"; 
+            } else { 
+                music.pause(); 
+                if(icon) icon.className = "fa-solid fa-play"; 
+            }
         }
     </script>
 </body>
