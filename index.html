@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ETIQUETAS CRÍTICAS PARA WHATSAPP -->
+    <!-- El orden y la presencia de estas etiquetas es vital -->
     <title>Mis XV - Palo</title>
-
-    <!-- ETIQUETAS PARA WHATSAPP (OPEN GRAPH) -->
     <meta property="og:title" content="Mis XV - Palo">
     <meta property="og:description" content="¡Te espero para festejar este gran momento de mi vida!">
-    <!-- Link completo de la imagen -->
-    <meta property="og:image" content="https://palo-weber.github.io/invitacion/paloxv.jpg">
-    <!-- Medidas exactas proporcionadas (640x320) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://palo-weber.github.io/invitacion/">
+    
+    <!-- Agregamos un parámetro de versión (?v=1) para engañar al caché de WhatsApp -->
+    <meta property="og:image" content="https://palo-weber.github.io/invitacion/paloxv.jpg?v=1">
+    <meta property="og:image:secure_url" content="https://palo-weber.github.io/invitacion/paloxv.jpg?v=1">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="640">
     <meta property="og:image:height" content="320">
-    <meta property="og:type" content="website">
 
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
@@ -43,7 +47,6 @@
             min-height: 100vh;
         }
 
-        /* --- ESTRELLAS --- */
         .stars-container {
             position: fixed;
             top: 0; left: 0;
@@ -65,16 +68,6 @@
             background-size: 180px 180px; 
             opacity: 0.7; 
         }
-        #stars-small { 
-            background-image: radial-gradient(2px 2px at 30px 80px, #fff, transparent); 
-            background-size: 350px 350px; 
-            opacity: 0.9; 
-        }
-        #stars-medium { 
-            background-image: radial-gradient(3px 3px at 150px 150px, #fff, transparent); 
-            background-size: 500px 500px; 
-            opacity: 1; 
-        }
 
         .container {
             max-width: 500px;
@@ -89,7 +82,6 @@
             max-width: 480px;
             margin: 20px auto; 
             display: block;
-            filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
         }
 
         .gold-divider path, .dress-code-svg path {
@@ -135,27 +127,6 @@
             text-transform: uppercase;
         }
 
-        .date-container {
-            margin-top: 30px;
-            color: #ffffff;
-            text-transform: uppercase;
-            font-weight: 300;
-            letter-spacing: 3px;
-            line-height: 1.6;
-        }
-
-        .date-day-month { font-size: 1.2rem; display: block; }
-        .date-year { font-size: 1rem; display: block; opacity: 0.9; }
-
-        .white-time {
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: 6px;
-            color: #ffffff;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
         .section {
             padding: 25px 30px;
             position: relative;
@@ -165,25 +136,11 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.1rem;
             margin-bottom: 10px;
-            line-height: 1.1; 
             background: var(--gold-text-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
             font-weight: 700;
-        }
-
-        .address-text span {
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .icon-gold {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: var(--gold-text-grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .btn {
@@ -210,26 +167,11 @@
             cursor: pointer;
         }
 
-        .dress-code-svg {
-            width: 140px; 
-            margin: 0 auto 15px;
-            display: block;
-            filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.7));
-        }
-
-        .ig-text span {
-            display: block;
-        }
-
         .btn-rsvp {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            width: auto; 
-            min-width: fit-content;
-            white-space: nowrap; 
-            margin: 25px auto 0;
             background: var(--gold-text-grad);
             color: #000;
             padding: 18px 25px;
@@ -242,24 +184,22 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        @media (max-width: 400px) {
-            .btn-rsvp {
-                font-size: 0.75rem;
-                padding: 16px 20px;
-                letter-spacing: 1px;
-                gap: 8px;
-            }
+        .music-player {
+            position: fixed;
+            top: 25px; right: 20px;
+            z-index: 1000;
         }
 
-        .footer-text {
-            font-size: 1.85rem; 
-            letter-spacing: 2px;
+        .music-btn {
+            width: 45px; height: 45px;
+            background: transparent; border: none;
+            font-size: 1.8rem; cursor: pointer;
+        }
+        
+        #music-icon {
             background: var(--gold-text-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin: 0;
         }
 
         #copy-toast {
@@ -277,32 +217,11 @@
         }
 
         #copy-toast.show { visibility: visible; animation: fadeinout 2s; }
-
-        .music-player {
-            position: fixed;
-            top: 25px; right: 20px;
-            z-index: 1000;
-            opacity: 0.7;
-        }
-
-        .music-btn {
-            width: 45px; height: 45px;
-            background: transparent; border: none;
-            font-size: 1.8rem; cursor: pointer;
-        }
-        
-        #music-icon {
-            background: var(--gold-text-grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         @keyframes fadeinout { 0%, 100% { opacity: 0; } 20%, 80% { opacity: 1; } }
     </style>
 </head>
 <body onclick="startMusicOnce()">
 
-    <!-- GRADIENT DEF -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
             <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -315,14 +234,10 @@
         </defs>
     </svg>
 
-    <!-- ESTRELLAS FONDO -->
     <div class="stars-container">
         <div id="stars-micro" class="star-layer"></div>
-        <div id="stars-small" class="star-layer"></div>
-        <div id="stars-medium" class="star-layer"></div>
     </div>
 
-    <!-- REPRODUCTOR MÚSICA -->
     <div class="music-player">
         <audio id="bg-music" loop><source src="cancion.mp3" type="audio/mpeg"></audio>
         <button class="music-btn" onclick="toggleMusic(event)"><i class="fa-solid fa-music" id="music-icon"></i></button>
@@ -336,60 +251,25 @@
             <h1>PALO</h1>
             <svg class="gold-divider" viewBox="0 0 1080 86.4"><path d="M1015.28,39.53c-4.21,0-7.71,2.89-8.72,6.77l-365.49.82c-7.29-4.91-11.98-8.78-20.23-9.71-3.6-.39-7.3-.46-11.01-.24-6.67.6-13.78,2.11-20.32,3.94-6.94,1.95-13.73,4.04-20.32,6.03-9.14-5.82-13.87-10.61-23.2-11.65-3.6-.41-7.3-.47-11-.25-6.67.6-13.78,2.11-20.33,3.94-30.24,8.49-57.48,19.7-79.54,13.28l-6.78-4.78-358.99-.82c-1.02-3.88-4.51-6.77-8.72-6.77-5,0-9.05,4.05-9.05,9.05s4.05,9.03,9.05,9.03c3.63,0,6.73-2.14,8.17-5.23l364.69-.11c5.82,2.38,12.05,3.34,19.59,3.4,15.88.15,30.32-2.96,45.77-6.88,8.75,6.47,17.34,8.7,29.08,8.82,21.76.2,40.82-5.72,63.47-11.43,9.59-2.42,21.16-6.22,30.55-6.17,7.78.04,12.78,3.89,18.84,7.29l6.77,4.41,359.53.11c1.45,3.08,4.54,5.23,8.18,5.23,4.99,0,9.05-4.05,9.05-9.05s-4.05-9.05-9.05-9.05ZM498.89,49.36c5.71-1.45,11.56-2.99,17.67-4.54,9.6-2.42,21.16-6.22,30.56-6.17,8.85.04,14.1,5.06,21.44,8.68-26.92,8.12-50.75,14.42-69.67,2.02Z"/></svg>
             <p class="intro-text">te espero para festejar este gran momento de mi vida!</p>
-            
-            <div class="date-container">
-                <span class="date-day-month">Sábado 18 de Abril</span>
-                <span class="date-year">de 2026</span>
-            </div>
-            <p class="white-time">21:00 HS</p>
         </header>
 
-        <!-- LUGAR DEL EVENTO -->
         <section class="section">
-            <i class="fa-solid fa-location-dot icon-gold"></i>
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 300; font-size: 0.9rem; margin-bottom: 8px; color: #fff;">Lugar de la fiesta</p>
+            <i class="fa-solid fa-location-dot" style="font-size: 3rem; margin-bottom: 20px; background: var(--gold-text-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
             <h2>EL PINAR EVENTOS</h2>
-            <p class="address-text">
-                <span>Guido Spano 1675,</span>
-                <span>Bahía Blanca</span>
-            </p>
+            <p>Guido Spano 1675, Bahía Blanca</p>
             <a href="https://www.google.com/maps/search/?api=1&query=El+Pinar+Eventos+Guido+Spano+1675" target="_blank" class="btn"> Ver Mapa </a>
         </section>
 
-        <!-- DRESS CODE -->
         <section class="section">
-            <svg class="gold-divider" viewBox="0 0 1080 86.4"><path d="M1015.28,39.53c-4.21,0-7.71,2.89-8.72,6.77l-365.49.82c-7.29-4.91-11.98-8.78-20.23-9.71-3.6-.39-7.3-.46-11.01-.24-6.67.6-13.78,2.11-20.32,3.94-6.94,1.95-13.73,4.04-20.32,6.03-9.14-5.82-13.87-10.61-23.2-11.65-3.6-.41-7.3-.47-11-.25-6.67.6-13.78,2.11-20.33,3.94-30.24,8.49-57.48,19.7-79.54,13.28l-6.78-4.78-358.99-.82c-1.02-3.88-4.51-6.77-8.72-6.77-5,0-9.05,4.05-9.05,9.05s4.05,9.03,9.05,9.03c3.63,0,6.73-2.14,8.17-5.23l364.69-.11c5.82,2.38,12.05,3.34,19.59,3.4,15.88.15,30.32-2.96,45.77-6.88,8.75,6.47,17.34,8.7,29.08,8.82,21.76.2,40.82-5.72,63.47-11.43,9.59-2.42,21.16-6.22,30.55-6.17,7.78.04,12.78,3.89,18.84,7.29l6.77,4.41,359.53.11c1.45,3.08,4.54,5.23,8.18,5.23,4.99,0,9.05-4.05,9.05-9.05s-4.05-9.05-9.05-9.05ZM498.89,49.36c5.71-1.45,11.56-2.99,17.67-4.54,9.6-2.42,21.16-6.22,30.56-6.17,8.85.04,14.1,5.06,21.44,8.68-26.92,8.12-50.75,14.42-69.67,2.02Z"/></svg>
-            <svg class="dress-code-svg" viewBox="0 0 1080 1080"><path d="M978.47,844.38c-16.74-58.74-36.15-115.8-58.51-172.86l-67.12-171.31c-4.8-12.26-5.55-28.07-5.97-40.86-.63-18.81,3.19-35.92,5.21-55.4.21-1.98,2.69-2.74,3.98-1.23l20.94,24.67c4.35,5.12,12.18,5.77,16.88.41l52.81-60.2c4.38-4.99,4.53-10.81.39-16.15l-99.23-127.92c-2.08-2.68-7.43-4.38-11.12-4.38h0c-11.19,0-22.08,3.73-30.86,10.67-22.81,18.01-36.06,40.34-56.58,46.75-4.49,1.4-16.02,2.76-16.55,2.3-30.61-1.28-42.58-25.83-63.26-42.88-9.68-7.98-18.55-16.84-31.09-16.84h-11.05c-3.71,0-9.04,1.69-11.13,4.38l-99.81,128.71c-3.88,5-2.95,10.86.97,15.33l52.82,60.21c5.17,5.9,13.02,4.34,17.56-1.07l20.22-24.1c1.28-1.53,3.78-.77,3.99,1.22,1.97,19,5.85,36.5,5.23,55.51-.42,12.79-1.16,28.61-5.97,40.86l-67.14,171.36c-22.49,57.4-42.1,114.8-58.74,173.93-2,7.1,3.08,12.55,9.34,13.83l75.12,15.35c1.25.25,2.04,1.48,1.76,2.72l-2.48,10.94c-1.22,5.39,2.54,11.51,8.17,12.64l62.04,12.44c24.48,4.91,48.43,8.81,73.34,10.77,4.32.34,8.39-.11,12.18,1.18.22.07.45.12.68.12h13.12c.22,0,.43-.04.64-.1,6.42-2.03,13.87-.87,21.17-1.78,16.71-2.07,32.68-3.96,49.25-7.26l77.13-15.36c5.69-1.13,9.4-7.2,8.17-12.67l-2.44-10.85c-.28-1.24.51-2.47,1.76-2.72l75.08-15.35c7.22-1.48,11.22-7.6,9.11-15.02ZM610.34,365l-27.8,33.46c-2.19,2.64-6.23,2.7-8.5.12l-31.91-36.24c-1.72-1.96-1.83-4.86-.26-6.93l85.33-112.65c2.75-3.64,6.14-4.55,12.43-4.71.14,0,.29,0,.42.03l4.39.66c7.98-.14,15.19,6.02,20.44,12.03,9.21,10.54,65.57,63.24,69.45,63.28,3.79.04,76-68.85,81.69-72.69,5.19-3.5,12-3.47,17.27-.1l.79.51,88.16,113.67c1.52,1.96,1.44,4.72-.19,6.59l-32.17,36.88c-2.1,2.4-5.84,2.36-7.89-.08l-28.91-34.57c-2.65-3.17-7.02-4.83-11.06-4.18-3.33.54-8.12,4.53-8.59,8.82l-8.23,74.94c-.29,2.66-2.54,4.68-5.22,4.68h-175.92c-2.68,0-4.93-2.02-5.22-4.68l-8.08-73.87c-.49-4.45-4.19-8.6-7.66-9.6-4.88-1.41-9.72.67-12.79,4.62ZM825.58,491.87l-187.23-.03c-1.39,0-2.45-1.24-2.24-2.62l2.6-16.7c.17-1.1,1.12-1.92,2.24-1.92l181.87-.02c1.11,0,2.06.8,2.24,1.9l2.76,16.74c.23,1.38-.84,2.64-2.24,2.64ZM888.36,853.24c-1.18.24-2.34-.49-2.64-1.66l-72.47-281.33c-2.29-6.58-7.75-9.35-14.13-7.52-4.83,1.39-8.85,6.8-7.12,13.52l78.09,303.11c.33,1.27-.48,2.55-1.77,2.79l-86.51,16.56c-35.17,5.61-67.98,5.25-102.41-.49l-83.59-16.12c-1.28-.25-2.09-1.53-1.77-2.79l78.34-304.2c1.74-6.76-4.16-11.93-8.53-12.7-6.56-1.15-11.44,2.12-13.26,8.86l-72.24,280.39c-.3,1.17-1.47,1.9-2.65,1.66l-63.31-12.97c-1.3-.27-2.1-1.59-1.73-2.87,16.25-55.71,35.39-108.81,55.83-162.91l63.1-159.22c.34-.86,1.18-1.43,2.11-1.43h200.72c.93,0,1.77.57,2.11,1.43l64.23,162.23c20.01,53.04,38.71,105.15,54.73,160.01.37,1.28-.43,2.61-1.73,2.87l-63.37,12.76Z"/><path d="M420.28,799.02l-291.5-.44c-18.7-.03-33.71-18.32-33.72-36.1l-.1-331.44c0-20.52,15.61-37.79,36.27-37.93l32.76-.23,15.14-41.14c1.44-3.9,4.64-6.12,9.1-6.12h172.19c4.93,0,7.83,2.58,9.37,6.78l14.87,40.53,31.11.02c20.56.01,37.87,16.08,37.87,37.25v331.3c0,19.41-13.97,34.51-33.36,37.52ZM337.11,363.52l-125.66-.06,62.82,55.01,62.84-54.94ZM219.65,464.24l40.99-34.13-69.11-60.33-11.52,31.05,39.65,63.41ZM329.05,464.19l39.6-63.38-11.52-31.02-69.11,60.32,41.02,34.07ZM302.53,507.7l27.85,164.87c.16,3.14-.32,5.78-2.11,8.01l-47.08,58.32c-3.47,4.3-10.14,4.28-13.63.1l-47.23-56.63c-1.38-1.66-2.57-4.68-2.16-7.15l28.01-167.91-12.44-31.5-10.72,8.76c-4.28,3.11-10.2,2.29-13.15-2.43l-44.55-71.3-32.34-.13c-11.46-.04-20.36,8.61-20.2,20.39v330.35c.01,11.57,9.02,19.74,20.36,19.74l283.31-.03c10.97,0,19.45-8.83,19.45-19.7v-331.24c-.31-10.9-8.55-19.44-19.33-19.43l-33.2.03-44.19,70.75c-3.09,4.94-8.77,6.43-13.52,2.96l-10.68-8.74-12.43,31.89ZM287.41,496.92l13.18-33.27-26.36-21.76-26.16,21.9,13.39,33.4,25.96-.27ZM289.08,533.99l-3.45-19.11-22.77.15-8.7,53.74,34.92-34.78ZM243.49,633.07l53.17-53.01-4.26-24.13-43.5,43.4-5.41,33.75ZM245.78,684.47l58.66-58.66-4.28-24.1-62.12,62.08-1.63,9.97c2.86,3.61,5.96,7.36,9.37,10.71ZM274.26,719.18l37.94-47.02-4.35-24.56-50.93,50.89,17.35,20.69Z"/></svg>
-            <h2>Dress Code</h2>
-            <p style="text-transform: uppercase; font-weight: 800; letter-spacing: 2px;">Blanco & Negro</p>
-        </section>
-
-        <!-- INSTAGRAM -->
-        <section class="section">
-            <svg class="gold-divider" viewBox="0 0 1080 86.4"><path d="M1015.28,39.53c-4.21,0-7.71,2.89-8.72,6.77l-365.49.82c-7.29-4.91-11.98-8.78-20.23-9.71-3.6-.39-7.3-.46-11.01-.24-6.67.6-13.78,2.11-20.32,3.94-6.94,1.95-13.73,4.04-20.32,6.03-9.14-5.82-13.87-10.61-23.2-11.65-3.6-.41-7.3-.47-11-.25-6.67.6-13.78,2.11-20.33,3.94-30.24,8.49-57.48,19.7-79.54,13.28l-6.78-4.78-358.99-.82c-1.02-3.88-4.51-6.77-8.72-6.77-5,0-9.05,4.05-9.05,9.05s4.05,9.03,9.05,9.03c3.63,0,6.73-2.14,8.17-5.23l364.69-.11c5.82,2.38,12.05,3.34,19.59,3.4,15.88.15,30.32-2.96,45.77-6.88,8.75,6.47,17.34,8.7,29.08,8.82,21.76.2,40.82-5.72,63.47-11.43,9.59-2.42,21.16-6.22,30.55-6.17,7.78.04,12.78,3.89,18.84,7.29l6.77,4.41,359.53.11c1.45,3.08,4.54,5.23,8.18,5.23,4.99,0,9.05-4.05,9.05-9.05s-4.05-9.05-9.05-9.05ZM498.89,49.36c5.71-1.45,11.56-2.99,17.67-4.54,9.6-2.42,21.16-6.22,30.56-6.17,8.85.04,14.1,5.06,21.44,8.68-26.92,8.12-50.75,14.42-69.67,2.02Z"/></svg>
-            <i class="fa-brands fa-instagram icon-gold"></i>
-            <h2>@paloweber</h2>
-            <p class="ig-text">
-                <span>Etiquetame en tus fotos</span>
-                <span>y videos de la fiesta</span>
-            </p>
-            <a href="https://www.instagram.com/paloweber/" target="_blank" class="btn"> Ver Perfil </a>
-        </section>
-
-        <!-- REGALOS -->
-        <section class="section">
-            <svg class="gold-divider" viewBox="0 0 1080 86.4"><path d="M1015.28,39.53c-4.21,0-7.71,2.89-8.72,6.77l-365.49.82c-7.29-4.91-11.98-8.78-20.23-9.71-3.6-.39-7.3-.46-11.01-.24-6.67.6-13.78,2.11-20.32,3.94-6.94,1.95-13.73,4.04-20.32,6.03-9.14-5.82-13.87-10.61-23.2-11.65-3.6-.41-7.3-.47-11-.25-6.67.6-13.78,2.11-20.33,3.94-30.24,8.49-57.48,19.7-79.54,13.28l-6.78-4.78-358.99-.82c-1.02-3.88-4.51-6.77-8.72-6.77-5,0-9.05,4.05-9.05,9.05s4.05,9.03,9.05,9.03c3.63,0,6.73-2.14,8.17-5.23l364.69-.11c5.82,2.38,12.05,3.34,19.59,3.4,15.88.15,30.32-2.96,45.77-6.88,8.75,6.47,17.34,8.7,29.08,8.82,21.76.2,40.82-5.72,63.47-11.43,9.59-2.42,21.16-6.22,30.55-6.17,7.78.04,12.78,3.89,18.84,7.29l6.77,4.41,359.53.11c1.45,3.08,4.54,5.23,8.18,5.23,4.99,0,9.05-4.05,9.05-9.05s-4.05-9.05-9.05-9.05ZM498.89,49.36c5.71-1.45,11.56-2.99,17.67-4.54,9.6-2.42,21.16-6.22,30.56-6.17,8.85.04,14.1,5.06,21.44,8.68-26.92,8.12-50.75,14.42-69.67,2.02Z"/></svg>
-            <i class="fa-solid fa-gift icon-gold"></i>
-            <p style="margin-bottom: 20px;">Tu presencia es mi mayor regalo, pero si deseás colaborar con mis sueños:</p>
+            <i class="fa-solid fa-gift" style="font-size: 3rem; margin-bottom: 20px; background: var(--gold-text-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+            <p style="margin-bottom: 20px;">Si deseás colaborar con mis sueños:</p>
             <span class="alias-display" onclick="copyAlias()">weber.paloma.mp</span>
-            <p style="font-size: 0.8rem; opacity: 0.8; letter-spacing: 1px;">CLIC PARA COPIAR ALIAS</p>
+            <p style="font-size: 0.8rem; opacity: 0.8;">CLIC PARA COPIAR ALIAS</p>
         </section>
 
-        <!-- CIERRE FINAL -->
-        <footer class="section" style="padding-top: 10px;">
-            <p class="footer-text">¡TE ESPERO!</p>
-            <a href="https://wa.me/5492914447273?text=Hola%20Palo!!!%20Te%20confirmo%20mi%20asistencia%20a%20la%20fiesta!" class="btn-rsvp" target="_blank">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> CONFIRMAR ASISTENCIA
+        <footer class="section">
+            <a href="https://wa.me/5492914447273?text=Confirmado!" class="btn-rsvp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> CONFIRMAR ASISTENCIA
             </a>
         </footer>
     </div>
@@ -397,18 +277,6 @@
     <div id="copy-toast">¡Copiado!</div>
 
     <script>
-        // Efecto Parallax Estrellas
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const micro = document.getElementById('stars-micro');
-            const small = document.getElementById('stars-small');
-            const medium = document.getElementById('stars-medium');
-            if (micro) micro.style.transform = `translateY(${scrolled * -0.2}px)`;
-            if (small) small.style.transform = `translateY(${scrolled * -0.4}px)`;
-            if (medium) medium.style.transform = `translateY(${scrolled * -0.6}px)`;
-        });
-
-        // Copiar Alias
         function copyAlias() {
             const alias = "weber.paloma.mp";
             const el = document.createElement('textarea');
@@ -422,20 +290,12 @@
             setTimeout(() => { toast.className = ""; }, 2000);
         }
 
-        // Música
         const music = document.getElementById('bg-music');
-        const icon = document.getElementById('music-icon');
-        function startMusicOnce() { if(music && music.paused) music.play().catch(() => {}); }
+        function startMusicOnce() { if(music.paused) music.play().catch(() => {}); }
         function toggleMusic(e) {
             e.stopPropagation();
-            if(!music) return;
-            if(music.paused) { 
-                music.play(); 
-                if(icon) icon.className = "fa-solid fa-music"; 
-            } else { 
-                music.pause(); 
-                if(icon) icon.className = "fa-solid fa-play"; 
-            }
+            if(music.paused) { music.play(); document.getElementById('music-icon').className = "fa-solid fa-music"; }
+            else { music.pause(); document.getElementById('music-icon').className = "fa-solid fa-play"; }
         }
     </script>
 </body>
